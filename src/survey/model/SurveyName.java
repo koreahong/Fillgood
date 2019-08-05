@@ -1,19 +1,19 @@
 package survey.model;
 
 public class SurveyName {
-	private String SurveyName;
+	private String SurName;
 
 	public String getSurveyName() {
-		return SurveyName;
+		return SurName;
 	}
 
 	public void setSurveyName(String surveyName) {
-		SurveyName = surveyName;
+		SurName = surveyName;
 	}
 
 	@Override
 	public String toString() {
-		return "SurveyName [SurveyName=" + SurveyName + "]";
+		return "SurName [SurName=" + SurName + "]";
 	}
 	
 }

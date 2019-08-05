@@ -8,6 +8,12 @@
 	<listener>
 		<listener-class>jdbc.DBCPInitListener</listener-class>
 	</listener>
+	<listener>
+        <listener-class>survey.service.surveyCount</listener-class>
+    </listener>
+
+
+
 
 	<context-param>
 		<param-name>poolConfig</param-name>

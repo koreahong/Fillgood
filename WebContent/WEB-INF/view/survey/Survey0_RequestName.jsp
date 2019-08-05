@@ -24,7 +24,7 @@
 	<nav class="nav fixed-top">
 		<div class="container header-center">
 			<div class="row justify-content-center">
-				<a href="index.do"><img src="images/logo.png"></a>
+				<a href="Fillgood.do"><img src="images/logo.png"></a>
 			</div>
 
 		</div>
@@ -45,7 +45,7 @@
 						</h3>
 
 						<div class="basic_answer_wrap">
-							<input type="text" name="name" value="" id="name" size="30"
+							<input type="text" name="SurName" value="" id="" size="30"
 								placeholder="이름을 입력하세요" aria-describedby="quiz_next_btn"
 								class="quiz_form">
 

@@ -35,7 +35,6 @@ public class surveyinitHandler implements CommandHandler {
 		surreq.setStress(req.getParameter("stress"));
 		surreq.setTired(req.getParameter("tired"));
 		surreq.setSquality(req.getParameter("squality"));
-		System.out.println("성공.............");
 		try {
 			
 			surveyService.surveyinit(surreq);

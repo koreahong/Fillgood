@@ -6,7 +6,7 @@
 
 <head>
  <title> 필굿 : 약사 Q&A"</title>
-       <meta charset="utf-8">
+     <meta charset="utf-8">
      <meta name="format-detection" content="telephone=no" />
      <link rel="icon" href="../images/favicon.ico">
      <link rel="shortcut icon" href="../images/favicon.ico" />
@@ -19,7 +19,7 @@
      <script src="../js/jquery.equalheights.js"></script>
      <script src="../js/jquery.easing.1.3.js"></script>
      <script>
-    function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
+   	 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
      </script>
  
  	 <!-- 추가한 라이브러리 -->
@@ -40,103 +40,122 @@
 	<script src="../js/superfish.js"></script>
 	<script src="../js/jquery.equalheights.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
+	
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
+	<style>
+		p{
+			font-family: 'Nanum Gothic', sans-serif;
+		}
+	</style>
+	
 </head>
 
 <!--==============================header=================================-->
-<header>
+<header style="padding-top:40px;">
 
   <div class="container_12">
       <div class="grid_12">
-      <h5>
-      <div Class="w3-display-topright w3-text-blue"><u:isLogin>${authUser.name}님, 환영합니다. :)</u:isLogin></div>
-	  </h5>
-	  <h1>
-	  <a href="../index.jsp"><img src="../images/logo.png"></a>
-	  </h1>          
+  
+      
+      <div Class="w3-display-bottomright w3-text-blue"><u:isLogin>${authUser.name}님, 환영합니다.</u:isLogin></div>
+	  <center><a href="../Fillgood.do"><img src="../images/logo.png"></a></center>      
       </div>
   </div>
-
+ 
 <div class="clear"></div>
 
-<div class="menu_block">
+<div class="menu_block" style="padding-bottom:0px; padding-top:13px; padding-left:150px; padding-right:150px; text-align:center">
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+    
+ 	<ul class="sf-menu" style="font-family: 'Nanum Gothic', sans-serif;">		
+ 	<li style=" font-size : 100%">
+		<p style= "padding-left : 10px">'<span style="text-decoration: underline; color : red"><%=session.getAttribute("totalCount")%>명</span>'이 필굿과 함께 하였습니다</p></li>	
+	       <li><a href="../surveyName.do" style="font-weight:bold; color:gray;">맞춤추천</a></li>
 
-      <ul class="sf-menu">
-       <li><a href="../survey.html">맞춤추천</a></li>
-       <li><a href="../nutritionary.jsp">영양제 백과</a></li>       
-       <li><a href="../article/list.do">약사Q/A</a></li>
-      
-       <u:notLogin>
-	   <li><a href="../login.do">로그인</a></li>
-	   <li><a href="../join.do">회원가입</a></li>
-	   </u:notLogin>
+	       <li><a href="../nutri.do" style="font-weight:bold; color:gray;">영양제 백과</a></li>      
+
+	       <li><a href="../article/list.do" style="font-weight:bold; color:gray;">약사Q/A</a></li>
+
+	       <u:notLogin>
+			<button type="button" class="btn btn-default" style="margin-left:100px;"><a href="../login.do">로그인</a></button>
+  			<button type="button" class="btn btn-default""><a href="../join.do">회원가입</a></button>
+	  	   </u:notLogin>
 	      
-	   <u:isLogin>
-	   <li><a href="../logout.do">로그아웃</a></li>
-	   </u:isLogin>
+		   <u:isLogin>
+		   	<button type="button" class="btn btn-default" style="margin-left:100px;"><a href="../logout.do">로그아웃</a></button>
+		   </u:isLogin>      
       </ul>
-      
+
     </nav>
     <div class="clear"></div>       
-  </div> 
-
-</header>
+  </div>
+  
+</header>  
 
 
 <!--=====================Content======================-->
 
 <br>
 <body>
-<div class="w3-container">
-<table border="1" class="w3-table w3-bordered">
-<tr>
-	<td class="w3-pale-red" width=100px >번호</td>
-	<td>${articleData.article.number}</td>
-</tr>
-<tr>
-	<td class="w3-pale-red">작성자</td>
-	<td>${articleData.article.writer.name}</td>
-</tr>
-<tr>
-	<td class="w3-pale-red">제목</td>
-	<td><c:out value='${articleData.article.title}' /></td>
-</tr>
-<tr>
-	<td class="w3-pale-red">내용</td>
-	<td><u:pre value='${articleData.content}'/></td>
-</tr>
-<tr>
-</tr>
-</table>
-</div>
+<br>
+	<div class="container" width="70%" margin-left=auto margin-right=auto >
+		<table class="table table-bordered" width="70%" border-color="white">
+			<tbody>
+				<div class="w3-container">
+				<table border="1" class="w3-table w3-bordered">
+				<tr>
+					<td class="w3-pale-red" width=100px >번호</td>
+					<td>${articleData.article.number}</td>
+				</tr>
+				<tr>
+					<td class="w3-pale-red">작성자</td>
+					<td>${articleData.article.writer.name}</td>
+				</tr>
+				<tr>
+					<td class="w3-pale-red">제목</td>
+					<td><c:out value='${articleData.article.title}' /></td>
+				</tr>
+				<tr>
+					<td class="w3-pale-red">내용</td>
+					<td>${articleData.content}</td>		
+				</tr>
+				
+				</table>
+				</div>
+				</tbody>
+				</table>
+				</div>
 <br>
 	<td colspan="2">
+	<p style="margin-left:76.5%;">
 		<c:set var="pageNo" value="${empty param.pageNo ? '1' : param.pageNo}" />
-		<a href="list.do?pageNo=${pageNo}"><button class="w3-button w3-white w3-border">목록으로</button></a>
+		<a href="list.do?pageNo=${pageNo}"><button class="w3-button w3-white w3-border w3-round">목록으로</button></a>
 		<c:if test="${authUser.id == articleData.article.writer.id}">
-		<a href="modify.do?no=${articleData.article.number}"><button class="w3-button w3-white w3-border">게시글수정</button></a>
+		<a href="modify.do?no=${articleData.article.number}"><button class="w3-button w3-white w3-border w3-round">게시글 수정</button></a>
 		<!--  
 		<a href="delete.do?no=${articleData.article.number}">[게시글삭제]</a>
 		 -->
 		</c:if>
+	</p>
 	</td>
 <br>
 
 </body>
 
 
+
 <!--==============================footer=================================-->
 <footer class="w3-padding-10 w3-opacity w3-light-Pale-Blue">
-	<a href="../term.html">이용약관</a>
+	<a href="term.do">이용약관</a>
 	 | 
-	<a href="../privacy.html">개인정보처리방침</a>
+	<a href="privacy.do">개인정보처리방침</a>
 	<br>
 	<br>
-	ⓒ 2019 team Binary, All rights reserved <br>
-	Contact : <a href="mailto:teambinary@gmail.com">teambinary@gmail.com</a>
+	ⓒ 2019 team Fillgood, All rights reserved <br>
+Contact : <a href="mailto:Acorn:IITP@gmail.com">Acorn:IITP@gmail.com</a>
 	<br>
 	<br>
-	<center><a href="../index.jsp"><img src="../images/logo-g.png"/></a></center>
+	<center><a href="Fillgood.do"><img src="images/logo-g.png"/></a></center>
 </footer>
 
 

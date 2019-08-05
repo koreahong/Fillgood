@@ -41,76 +41,135 @@
 	<script src="../js/superfish.js"></script>
 	<script src="../js/jquery.equalheights.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
+	
+	<!-- for 스마트에디터 적용  -->
+	<script type="text/javascript" src="../se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	<!-- for 게시판css -->
+	<link rel="stylesheet"
+
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	
+	<!-- 추가Optional theme -->
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+	<!-- 추가Latest compiled and minified JavaScript -->
+	<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+		
 </head>
 
 <!--==============================header=================================-->
-<header>
+<header style="padding-top:40px;">
 
   <div class="container_12">
       <div class="grid_12">
-      <h5>
-      <div Class="w3-display-topright w3-text-blue"><u:isLogin>${authUser.name}님, 환영합니다. :)</u:isLogin></div>
-	  </h5>
-	  <h1>
-	  <a href="../index.jsp"><img src="../images/logo.png"></a>
-	  </h1>          
+
+      
+      <div Class="w3-display-bottomright w3-text-blue"><u:isLogin>${authUser.name}님, 환영합니다.</u:isLogin></div>
+	  <center><a href="../Fillgood.do"><img src="../images/logo.png"></a></center>      
       </div>
   </div>
-
+ 
 <div class="clear"></div>
 
-<div class="menu_block">
+<div class="menu_block" style="padding-bottom:0px; padding-top:13px; padding-left:150px; padding-right:150px; text-align:center">
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+    
+ 	<ul class="sf-menu" style="font-family: 'Nanum Gothic', sans-serif;">		
+ 	<li style=" font-size : 100%">
+		<p style= "padding-left : 10px">'<span style="text-decoration: underline; color : red"><%=session.getAttribute("totalCount")%>명</span>'이 필굿과 함께 하였습니다</p></li>	
+	       <li><a href="../surveyName.do" style="font-weight:bold; color:gray;">맞춤추천</a></li>
 
-      <ul class="sf-menu">
-       <li><a href="../survey.html">맞춤추천</a></li>
-       <li><a href="../nutritionary.jsp">영양제 백과</a></li>       
-       <li><a href="../article/list.do">약사Q/A</a></li>
-      
-       <u:notLogin>
-	   <li><a href="../login.do">로그인</a></li>
-	   <li><a href="../join.do">회원가입</a></li>
-	   </u:notLogin>
+	       <li><a href="../nutri.do" style="font-weight:bold; color:gray;">영양제 백과</a></li>      
+
+	       <li><a href="../article/list.do" style="font-weight:bold; color:gray;">약사Q/A</a></li>
+
+	       <u:notLogin>
+			<button type="button" class="btn btn-default" style="margin-left:100px;"><a href="../login.do">로그인</a></button>
+  			<button type="button" class="btn btn-default"><a href="../join.do">회원가입</a></button>
+	  	   </u:notLogin>
 	      
-	   <u:isLogin>
-	   <li><a href="../logout.do">로그아웃</a></li>
-	   </u:isLogin>
+		   <u:isLogin>
+		   	<button type="button" class="btn btn-default" style="margin-left:100px;"><a href="../logout.do">로그아웃</a></button>
+		   </u:isLogin>      
       </ul>
-      
+
     </nav>
     <div class="clear"></div>       
-  </div> 
-
-</header>  
+  </div>
+  
+</header> 
 
 <!--=====================Content======================-->
 <body>
-<form action="write.do" method="post">
-<p>
-	제목:<br/><input type="text" name="title" value="${param.title}">
-	<c:if test="${errors.title}">제목을 입력하세요.</c:if>
-</p>
-<p>
-	내용:<br/>
-	<textarea name="content" rows="5" cols="30">${param.title}</textarea>
-</p>
-<input type="submit" value="새 글 등록">
-</form>
+<br>
+
+	<div class="container" width="70%" style = "margin-left:auto; margin-right:auto;" >
+		<table class="table table-bordered" width="70%" border-color="white">
+			<tbody>
+				<form id="frm" action="write.do" method="post">
+					<tr>
+						<th>제목</th>
+						<td><input type="text" id="title" name="title" placeholder="제목을 입력하세요." style="width: 100%" value="${param.title}" class="form-control">
+						<c:if test="${errors.title}">제목을 입력하세요.</c:if>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea rows="10" cols="30" id="content" name="content" placeholder="내용을 입력하세요." style="width: 100%; height: 400px;"class="form-control">${param.content}</textarea>
+					</td>
+					</tr>
+					</table>
+					
+					<td>
+					<p style="margin-rignt:93%;">
+					<input type="submit" value="새 글 등록" onclick="doPost()" padding-left="30%" class="w3-button w3-white w3-border w3-round">
+					</p>
+					</td>
+				</form>
+			</tbody>
+		</div>
 </body>
 
 
+<!-- 시작 : for 스마트에디터 적용  -->
+	<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+		 oAppRef: oEditors,
+		 elPlaceHolder: "content",
+		 sSkinURI: "../se2/SmartEditor2Skin.html",
+		 fCreator: "createSEditor2"
+		});		
+
+		function doPost()
+		{
+			// 에디터의 내용을 실제 Textarea 로 가져옴
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		 submit();
+		}
+		
+	</script>
+<!-- 종료 : for 스마트에디터 적용  -->
+
 <!--==============================footer=================================-->
 <footer class="w3-padding-10 w3-opacity w3-light-Pale-Blue">
-	<a href="../term.html">이용약관</a>
+	<a href="../term.do">이용약관</a>
 	 | 
-	<a href="../privacy.html">개인정보처리방침</a>
+	<a href="../privacy.do">개인정보처리방침</a>
 	<br>
 	<br>
-	ⓒ 2019 team Binary, All rights reserved <br>
-	Contact : <a href="mailto:teambinary@gmail.com">teambinary@gmail.com</a>
+	ⓒ 2019 team Fillgood, All rights reserved <br>
+Contact : <a href="mailto:Acorn:IITP@gmail.com">Acorn:IITP@gmail.com</a>
 	<br>
 	<br>
-	<center><a href="../index.jsp"><img src="../images/logo-g.png"/></a></center>
+	<center><a href="../Fillgood.do"><img src="../images/logo-g.png"/></a></center>
 </footer>
 
 

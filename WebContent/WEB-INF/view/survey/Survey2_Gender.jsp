@@ -24,7 +24,7 @@
 	<nav class="nav fixed-top bg-purple">
 		<div class="container header-center">
 			<div class="row justify-content-center">
-				<a href="index.do"><img src="images/logo.png"></a>
+				<a href="Fillgood.do"><img src="images/logo.png"></a>
 			</div>
 
 		</div>

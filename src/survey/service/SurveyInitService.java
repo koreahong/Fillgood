@@ -18,7 +18,7 @@ public class SurveyInitService{
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			surveyDao.insert(conn, surreq);
-			conn.commit();
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

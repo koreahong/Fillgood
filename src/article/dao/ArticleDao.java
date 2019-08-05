@@ -26,7 +26,7 @@ public class ArticleDao {
 					+ "values (?,?,?,?,?,0)");
 			pstmt.setString(1, article.getWriter().getId());
 			pstmt.setString(2, article.getWriter().getName());
-			pstmt.setString(3, article.getTitle());
+			pstmt.setString(3, article.getTitle()); 
 			pstmt.setTimestamp(4, toTimestamp(article.getRegDate()));
 			pstmt.setTimestamp(5, toTimestamp(article.getModifiedDate()));
 			int insertedCount = pstmt.executeUpdate();

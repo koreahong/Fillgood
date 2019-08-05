@@ -41,55 +41,48 @@
 	<script src="js/superfish.js"></script>
 	<script src="js/jquery.equalheights.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
+	
+	<style type="text/css">
+		#wrapper{
+			width:250px;
+			margin:0 auto;
+			border:0px outset gray; 
+		}
+	</style>
+	
 </head>
 
 <!--==============================header=================================-->
-<header>
+<header style="padding-top:20px;">
 
-  <div class="container_12">
-      <div class="grid_12">
-      <h5>
-      <div Class="w3-display-topright w3-text-blue"><u:isLogin>${authUser.name}님, 환영합니다. :)</u:isLogin></div>
-	  </h5>
-	  <h1>
-	  <a href="index.jsp"><img src="images/logo.png"></a>
-	  </h1>          
-      </div>
-  </div>
-   
-<div class="clear"></div>
-
-<div class="menu_block">
-    <nav class="horizontal-nav full-width horizontalNav-notprocessed">
-
+    <nav class="horizontal-nav full-width horizontalNav-notprocessed"">
+	
       <ul class="sf-menu">
-       <li><a href="survey.html">맞춤추천</a></li>
-       <li><a href="nutritionary.jsp">영양제 백과</a></li>       
-       <li><a href="article/list.do">약사Q/A</a></li>
+      <left><a href="Fillgood.do"><img src="images/logo.png" style="width:10%;" style="margin-top:10px;"></a></left>
       
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       <li><a href="surveyName.do" style="margin-top:10px;"><p style="color:gray;">맞춤추천</p></a></li>
+       <li><a href="nutri.do" style="margin-top:10px;"><p style=" color:gray;">영양제 백과</p></a></li>       
+       <li><a href="article/list.do" style="margin-top:10px;"><p style=" color:gray;">약사Q/A</p></a></li>
+       <li>&nbsp;</li>
+       <li>&nbsp;</li>
+       
        <u:notLogin>
-	   <li><a href="login.do">로그인</a></li>
-	   <li><a href="join.do">회원가입</a></li>
-	   </u:notLogin>
+			<button type="button" class="btn btn-default" style="margin-top:4px;"><a href="login.do">로그인</a></button>
+  			<button type="button" class="btn btn-default" style="margin-top:4px;"><a href="join.do">회원가입</a></button>
+	  	</u:notLogin>
 	      
 	   <u:isLogin>
-	   <li><a href="logout.do">로그아웃</a></li>
+	   		<button type="button" class="btn btn-default" style="margin-top:4px;"><a href="logout.do">로그아웃</a></button>
 	   </u:isLogin>
        
-       <!-- 로그인/회원가입 모달창으로
-       <u:notLogin>
-	   <li><a data-toggle="modal" data-target="#myModal_login" >로그인</a></li>
-	   <li><a data-toggle="modal" data-target="#myModal_signin">회원가입</a></li>
-	   </u:notLogin>
-	   -->
       </ul>
-      
-    </nav>
-    <div class="clear"></div>       
-  </div>
-  
-</header>  
+      </nav>
+            
+   <hr>
 
+</header>   
 <!--=====================Content======================-->
 
 <body>
@@ -98,39 +91,54 @@
 <script>
 alert("로그인에 실패 했습니다. 정보를 다시 확인해주세요.");
 history.go(-1);
-//location.href="index.jsp"; // 홈으로 이동
+//location.href="Fillgood.jsp"; // 홈으로 이동
 </script>
  -->
+ 
+ <div class="container_12">
+		<center style="margin-top:40px; margin-bottom:30px;"><img src="images/sign-1.jpg"style="width:70%;margin-bottom: 20px;margin-top: 50px;"></center>
+ </div>
 
-<form action="login.do" method="post">
-<c:if test="${errors.idOrPwNotMatch}">
-아이디와 암호가 일치하지 않습니다.
-</c:if>
-<p>
-	아이디:<br/><input type="text" name="id" value="${param.id}">
-	<c:if test="${errors.id}">ID를 입력하세요.</c:if>
-</p>
-<p>
-	암호:<br/><input type="password" name="password">
-	<c:if test="${errors.password}">암호를 입력하세요.</c:if>
-</p>
-<input type="submit" value="로그인">
-</form>
+	<div id="wrapper">
+
+		<form action="login.do" method="post">
+			
+			<p>
+			<center style="margin-bottom:20px;">아이디 :&nbsp;<input type="text" name="id" placeholder="ID" value="${param.id}">
+			<br><c:if test="${errors.id}"><font color="red">아이디를 입력해 주세요.</font></c:if>
+			</center>
+			</p>
+			
+			<p>
+			<center>&emsp;암호 :&nbsp;<input type="password" name="password" placeholder="Password">
+			<br><c:if test="${errors.password}"><font color="red">암호를 입력해 주세요.</font></c:if>
+			</center>
+			</p>
+			
+			<p><center><c:if test="${errors.idOrPwNotMatch}"><br><font color="red">아이디와 암호가 일치하지 않습니다.</font></c:if></center></p>
+			
+			<center style="margin-bottom:150px; margin-top:70px;">
+				<input type="image" src="./images/sign-button.jpg" name="Submit" value="Submit" style="width:50%;">
+			</center>
+		</form>
+	</div>
+	
+
 
 
 
 <!--==============================footer=================================-->
 <footer class="w3-padding-10 w3-opacity w3-light-Pale-Blue">
-	<a href="term.html">이용약관</a>
+	<a href="term.do">이용약관</a>
 	 | 
-	<a href="privacy.html">개인정보처리방침</a>
+	<a href="privacy.do">개인정보처리방침</a>
 	<br>
 	<br>
-	ⓒ 2019 team Binary, All rights reserved <br>
-	Contact : <a href="mailto:teambinary@gmail.com">teambinary@gmail.com</a>
+	ⓒ 2019 team Fillgood, All rights reserved <br>
+	Contact : <a href="mailto:Acorn:IITP@gmail.com">Acorn:IITP@gmail.com</a>
 	<br>
 	<br>
-	<center><a href="index.jsp"><img src="images/logo-g.png"/></a></center>
+	<center><a href="Fillgood.do"><img src="images/logo-g.png"/></a></center>
 </footer>
 
 

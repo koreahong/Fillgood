@@ -1,3 +1,5 @@
+
+<%@page import="survey.model.SurveyName"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -23,7 +25,7 @@
 	<nav class="nav fixed-top bg-purple">
 		<div class="container header-center">
 			<div class="row justify-content-center">
-				<a href="index.do"><img src="images/logo.png"></a>
+				<a href="Fillgood.do"><img src="images/logo.png"></a>
 			</div>
 
 		</div>
@@ -38,7 +40,7 @@
 				<div class="quiz_wrap">
 
 					<h3 class="text-center">
-						반가워요, <span class="quiz_username">님!</span>
+						반가워요 <span class="quiz_username"></span>
 					</h3>
 					<div class="path_icon">
 						<i class="far fa-smile"></i>

@@ -10,6 +10,7 @@ public class indexHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) {
 		
-		return "/index.jsp";
+		return ""
+				+ "/Fillgood.jsp";
 	}
 }
